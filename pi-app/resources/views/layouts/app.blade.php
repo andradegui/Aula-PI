@@ -17,7 +17,7 @@
     <header>
         <nav class="nav navbar-light bg-light navbar-expand-sm">
             <div class="container-fluid">
-                <ul class="navbar-nav me-auto mb-2">
+                <ul class="navbar-nav me-auto mb-2 mt-1">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('product.index') }}">
                             Produto
@@ -49,6 +49,13 @@
                         <a class="nav-link" href="{{ route('tag.trash') }}">
                             Lixeira Tag
                         </a>
+                    </li>
+
+                    <li class="ms-auto">
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="btn btn-danger mt-1">Sair</button>
+                        </form>
                     </li>
                 </ul>
             </div>

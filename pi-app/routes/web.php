@@ -18,7 +18,7 @@ use App\Http\Controllers\TagController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -26,13 +26,7 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::middleware(['auth'])->group(function(){
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth', 'admin'])->group(function(){
 Route::get('/product/create', [ProductController::class,'create'])->name('product.create');
 Route::post('/product/create', [ProductController::class,'store'])->name('product.store');
 Route::get('/product/edit/{product}', [ProductController::class,'edit'])->name('product.edit');
@@ -43,7 +37,6 @@ Route::get('/product/trash/restore/{product}', [ProductController::class,'restor
 Route::get('/product/destroy/{product}', [ProductController::class,'destroy'])->name('product.destroy');
 Route::get('/product/trash', [ProductController::class,'trash'])->name('product.trash');
 Route::get('/product/trash/restore/{product}', [ProductController::class,'restore'])->name('product.restore');
-
 
 Route::get('/category/create', [CategoryController::class,'create'])->name('category.create');
 Route::post('/category/create', [CategoryController::class,'store'])->name('category.store');
@@ -64,7 +57,6 @@ Route::put('/tag/edit/{tag}', [TagController::class, 'update'])->name('tag.updat
 Route::get('/tag/destroy/{tag}', [TagController::class, 'destroy'])->name('tag.destroy');
 Route::get('/tag/restore/{tag}', [TagController::class, 'restore'])->name('tag.restore');
 Route::get('/tag/trash', [TagController::class, 'trash'])->name('tag.trash');
-});
 
 Route::get('/tag', [TagController::class, 'index'])->name('tag.index');
 Route::get('/tag/create', [TagController::class, 'create'])->name('tag.create');
@@ -76,4 +68,6 @@ Route::get('/tag/trash/restore/{tag}', [TagController::class,'restore'])->name('
 Route::get('/tag/destroy/{tag}', [TagController::class, 'destroy'])->name('tag.destroy');
 
 });
+
+
 
