@@ -40,7 +40,7 @@
                 @endforeach
             </select>
         </div>
-        <button class="btn btn-lg w-50 btn-success mt-3" type="submit">Enviar</button>
+        <button class="btn btn-lg w-50 btn-success mt-3 mb-2" type="submit">Enviar</button>
 
     </form>
 </section>@endsection
