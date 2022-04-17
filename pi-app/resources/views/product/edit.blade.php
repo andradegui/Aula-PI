@@ -6,7 +6,7 @@
 
 
 <section class="container mt-2 text-center">
-    <form class="text-center row justify-content-center d-flex" action="{{route('product.edit', $product->id)}}" method="POST">
+    <form class="text-center row justify-content-center d-flex" action="{{route('product.edit', $product->id)}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method("PUT")
         <div class="col-7">
@@ -44,6 +44,11 @@
                 @endforeach
             </select>
         </div>
+
+        <div class="col-7">
+            <input class="form-control mt-3 text-center" placeholder="Image" type="file" name="image">
+        </div>
+
         <button class="btn btn-lg w-50 btn-success mt-3" type="submit">Enviar</button>
 
     </form>
