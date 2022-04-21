@@ -17,7 +17,7 @@ class ProductController extends Controller
 
     public function create()
     {
-        return view('product.create')->with(['categories' => Category::all(), 'tags' => Tag::all()]);//aqui adiciono a categoria e a tag ao produto
+        return view('product.create')->with(['categories' => Category::all()->sortBy('category_id'), 'tags' => Tag::all()]);//aqui adiciono a categoria e a tag ao produto
     }
 
     public function store(Request $request){
@@ -49,14 +49,6 @@ class ProductController extends Controller
             'product' => $product,
             'categories' => Category::all(),
             'tags' => Tag::all()]);
-
-
-
-        return view('product.edit')->with([
-            'product' => $product,
-            'categories' => Category::all(),
-            'tags' => Tag::all()
-        ]);
     }
 
     public function update(Product $product, Request $request)
