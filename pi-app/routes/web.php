@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
@@ -12,6 +13,10 @@ Route::get('/search/tag/{tag}', [eCommerceController::class, 'searchTag'])->name
 
 
 require __DIR__.'/auth.php';
+
+Route::middleware(['auth'])->group(function(){
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+});
 
 
 Route::middleware(['auth','admin'])->group(function(){
