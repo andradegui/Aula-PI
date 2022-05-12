@@ -26,7 +26,11 @@
                     </div>
                     <div class="text-center mt-3">
                         <a href="#" class="btn btn-primary btn-sm">Visualizar</a>
-                        <a href="#" class="btn btn-secondary btn-sm">Comprar</a>
+                            <form action="{{route('cart.store', $product->id)}}" method="POST" style="display:inline;">
+                                @csrf
+                                <button type="submit" class="btn btn-secondary btn-sm">Comprar</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             @endforeach

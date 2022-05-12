@@ -39,6 +39,13 @@
                                 @endforeach
                             </ul>
                         </li>
+                        @if(Auth()->user() && Auth()->user()->isAdmin())
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('product.index') }}">
+                                Admin
+                            </a>
+                        </li>
+                        @endif
                     </ul>
 
                     <ul class="navbar-nav ms-auto">
